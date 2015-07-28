@@ -1,0 +1,592 @@
+
+/* OS/2 Warp 3.0 Resource Script File - Created by Universal Resource Editor */
+
+#define INCL_WINSYS
+#define INCL_WINBIDI
+#define INCL_WINSTDDLGS
+#define INCL_WINSTDSPIN
+#define INCL_NLS
+#define INCL_SW
+
+#include <os2.h>
+
+#include "pmseek.h"
+
+WINDOWTEMPLATE WIN_MAIN
+BEGIN
+    WINDOW "Data Seeker", WIN_MAIN, 16, 36, 273, 225, WC_FRAME, FS_NOBYTEALIGN |
+                FS_SIZEBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS | WS_VISIBLE,
+                FCF_TITLEBAR | FCF_SYSMENU | FCF_MENU | FCF_MINMAX |
+                FCF_CLOSEBUTTON | FCF_ACCELTABLE | FCF_TASKLIST
+    PRESPARAMS PP_USER, "10.System Proportional"
+    BEGIN
+        CONTROL "~Files to search for", TXT_FILESRCH, 2, 202, 100, 8, WC_STATIC,
+                                            SS_TEXT | DT_LEFT | DT_TOP |
+                                            DT_MNEMONIC | WS_GROUP | WS_VISIBLE
+        CONTROL "",                    DD_FILESRCH, 2, 28, 246, 174,
+                                            WC_COMBOBOX, CBS_DROPDOWN |
+                                            LS_HORZSCROLL | WS_GROUP |
+                                            WS_TABSTOP | WS_VISIBLE
+                PRESPARAMS PP_BORDERCOLORINDEX, CLR_DARKBLUE
+        CONTROL "~Text to search for (if any)", TXT_TEXTSRCH, 2, 180, 140, 8,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_TOP | DT_MNEMONIC | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "",                    DD_TEXTSRCH, 2, 29, 266, 149,
+                                            WC_COMBOBOX, CBS_DROPDOWN |
+                                            LS_HORZSCROLL | WS_GROUP |
+                                            WS_TABSTOP | WS_VISIBLE
+        CONTROL "Search results ~history", TXT_SRCHRES, 4, 157, 150, 8,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_TOP | DT_MNEMONIC | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "DD_TEXTSRCH_HIST",    DD_SRCHRES, 2, 6, 266, 150, WC_COMBOBOX,
+                                            CBS_DROPDOWN | LS_HORZSCROLL |
+                                            WS_GROUP | WS_TABSTOP | WS_VISIBLE
+        CONTROL "Files found",         TXT_FILEFOUND, 2, 134, 216, 8, WC_STATIC,
+                                            SS_TEXT | DT_LEFT | DT_TOP |
+                                            DT_MNEMONIC | WS_GROUP | WS_VISIBLE
+        CONTROL "",                    LBOX_FILEFOUND, 3, 85, 266, 47,
+                                            WC_LISTBOX, LS_NOADJUSTPOS |
+                                            LS_HORZSCROLL | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_BORDERCOLORINDEX, CLR_DARKBLUE
+        CONTROL "~Text found",         TXT_TEXTFOUND, 2, 74, 174, 8, WC_STATIC,
+                                            SS_TEXT | DT_LEFT | DT_TOP |
+                                            DT_MNEMONIC | WS_VISIBLE
+        CONTROL "",                    LBOX_TEXTFOUND, 2, 21, 266, 51,
+                                            WC_LISTBOX, LS_NOADJUSTPOS |
+                                            LS_HORZSCROLL | WS_TABSTOP |
+                                            WS_VISIBLE
+        CONTROL "~Search",             PB_SEARCH, 2, 4, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_GROUP | WS_TABSTOP | WS_DISABLED |
+                                            WS_VISIBLE
+        CONTROL "S~top",               PB_STOP, 54, 4, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_TABSTOP | WS_DISABLED |
+                                            WS_VISIBLE
+        CONTROL "#2",                  PB_MOVEDOWN, 230, 134, 20, 9, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_ICON |
+                                            BS_MINIICON | WS_TABSTOP |
+                                            WS_VISIBLE
+        CONTROL "#4",                  PB_MOVEUP, 250, 134, 20, 9, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_ICON |
+                                            BS_MINIICON | WS_TABSTOP |
+                                            WS_VISIBLE
+        CONTROL "Debug",               PB_TEST, 216, 4, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_DISABLED
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_BLACK
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_PALEGRAY
+        CONTROL "PB_DRIVES",           PB_DRIVES, 151, 204, 116, 10, WC_BUTTON,
+                                            BS_PUSHBUTTON | WS_TABSTOP |
+                                            WS_VISIBLE
+        CONTROL "Info area",           TXT_INFO, 110, 6, 102, 9, WC_STATIC,
+                                            SS_TEXT | DT_LEFT | DT_VCENTER |
+                                            WS_GROUP
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_WHITE
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_RED
+                PRESPARAMS PP_HILITEFOREGROUNDCOLORINDEX, CLR_BLUE
+                PRESPARAMS PP_HILITEBACKGROUNDCOLORINDEX, CLR_YELLOW
+                PRESPARAMS PP_DISABLEDFOREGROUNDCOLORINDEX, CLR_PALEGRAY
+                PRESPARAMS PP_DISABLEDBACKGROUNDCOLORINDEX, CLR_PALEGRAY
+        CONTROL "EF_SEARCHING",        EF_SEARCHING, 6, 148, 240, 6,
+                                            WC_ENTRYFIELD, ES_READONLY
+                CTLDATA 8, 32, 0, 0
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_DARKBLUE
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_PALEGRAY
+        CONTROL "SEARCHING_OLD (do not delete)", TXT_SEARCHING_OLD,
+                                        181, 75, 90, 8, WC_STATIC, SS_TEXT |
+                                            DT_LEFT | DT_TOP | WS_GROUP
+        CONTROL "...",                 PB_FOC, 250, 191, 20, 10, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_TABSTOP | WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_BLACK
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_PALEGRAY
+    END
+END
+
+CODEPAGE 850
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    IS_SRCHING,                         "Search complete - %5d file(s)found "
+    IS_STOPPED,                         "Search results history"
+    OPEN_HELP,                          "Text and file finder"
+    IS_WAITSEARCHEND,                   "Searching..."
+    OPEN_PROMPTDLG,                     "Files found"
+    IDS_ELAPSEDTIME,                    "Elapsed time"
+    IS_EDITOREPM,                       "Dos* API error. Type HELP SYS%04d in a command line window for more details."
+    17,                                 "Memory allocation failed."
+    RESRESZ_STEPS,                      "Invalid startup parameters. See the program documentation for more details"
+    33,                                 "The current file contains lines exceeding the current line length limit (1MB)"
+    34,                                 "Failed to load the initialization file"
+    35,                                 "Load file error"
+    36,                                 "Failed to save the current configuration"
+END
+
+DLGTEMPLATE DLG_ABOUT
+BEGIN
+    DIALOG "Data Seeker", DLG_ABOUT, 0, 0, 240, 130, FS_NOBYTEALIGN |
+                FS_MOUSEALIGN | FS_DLGBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS |
+                WS_VISIBLE, FCF_TITLEBAR | FCF_SYSMENU
+    PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    PRESPARAMS PP_USER, "10.System Proportional"
+    BEGIN
+        CONTROL "DataSeeker",          ST_ACDATASEEKER, 37, 115, 128, 10,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_VCENTER | WS_GROUP | WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans Bold"
+        CONTROL "Version:  1.02    Datum:  2010-07-27  18:37    Build:  0012    DEBUG",
+                                       ST_VERSION, 38, 103, 191, 10, WC_STATIC,
+                                            SS_TEXT | DT_LEFT | DT_VCENTER |
+                                            WS_GROUP | WS_VISIBLE
+        CONTROL "",                    102, 56, 49, 118, 0, WC_STATIC,
+                                            SS_FGNDRECT | WS_GROUP | WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLOR, 0x00808080
+        CONTROL "¸ 2003-2007 Alessandro Felice Cantatore",
+                                       ST_ALESSANDROFELICECANTATORE,
+                                        36, 84, 167, 10, WC_STATIC, SS_TEXT |
+                                            DT_LEFT | DT_VCENTER | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "~Close",              DID_OK, 80, 3, 60, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_TABSTOP | WS_VISIBLE
+        CONTROL "¸ 2008-2014 Andreas Buchinger", ST_ANDREASBUCHINGER,
+                                        36, 76, 162, 10, WC_STATIC, SS_TEXT |
+                                            DT_LEFT | DT_VCENTER | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL WIN_MAIN,              WIN_MAIN, 11, 108, 16, 15, WC_STATIC,
+                                            SS_ICON | WS_GROUP | WS_VISIBLE
+        CONTROL "",                    BAR_LITE, 35, 92, 193, 8, WC_CONTAINER,
+                                            CCS_SINGLESEL | CCS_AUTOPOSITION |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_WHITE
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_WHITE
+        CONTROL "",                    MLE_TRANSLATOR_INFO, 37, 22, 193, 46,
+                                            WC_MLE, MLS_BORDER | MLS_IGNORETAB |
+                                            MLS_READONLY | MLS_VSCROLL |
+                                            MLS_WORDWRAP | WS_TABSTOP |
+                                            WS_VISIBLE | MLS_LIMITVSCROLL
+    END
+END
+
+/* add | MLS_LIMITVSCROLL to MLE, URE does not do it */
+
+ICON        ICON_DOWN                          "\\_work\\DataSeeker\\trunk\\down.ICO"
+ICON        ICON_UP                            "\\_work\\DataSeeker\\trunk\\up.ICO"
+ACCELTABLE WIN_MAIN PRELOAD
+BEGIN
+    "S",        IDM_SAVE, CHAR, CONTROL
+    "s",        IDM_SAVE, CHAR, CONTROL
+    "F",        IDM_OPENDIR, CHAR, CONTROL
+    "f",        IDM_OPENDIR, CHAR, CONTROL
+    "L",        IDM_OPENCLI, CHAR, CONTROL
+    "l",        IDM_OPENCLI, CHAR, CONTROL
+    "C",        IDM_COPYLINE, CHAR, SHIFT, CONTROL
+    "c",        IDM_COPYLINE, CHAR, SHIFT, CONTROL
+    "X",        IDM_CUT, CHAR, CONTROL
+    "x",        IDM_CUT, CHAR, CONTROL
+    "V",        IDM_PASTE, CHAR, CONTROL
+    "v",        IDM_PASTE, CHAR, CONTROL
+    "O",        IDM_OPENSEL, CHAR, CONTROL
+    "o",        IDM_OPENSEL, CHAR, CONTROL
+    "p",        IDM_PROPERTIES, CHAR, CONTROL
+    "P",        IDM_PROPERTIES, CHAR, CONTROL
+    "e",        CMD_EDITSEL2, CHAR, CONTROL
+    "E",        CMD_EDITSEL2, CHAR, CONTROL
+    "C",        IDM_COPYFNAMES, CHAR, CONTROL
+    "c",        IDM_COPYFNAMES, CHAR, CONTROL
+    "C",        IDM_COPYALLFNAMES, CHAR, CONTROL, ALT
+    "c",        IDM_COPYALLFNAMES, CHAR, CONTROL, ALT
+    "c",        IDM_COPYLINE, CHAR, SHIFT, CONTROL
+    "C",        IDM_COPYLINE, CHAR, SHIFT, CONTROL
+    "d",        CMD_DELENTRY, CHAR, CONTROL
+    "D",        CMD_DELENTRY, CHAR, CONTROL
+    "d",        CMD_DELALLENTRY, CHAR, SHIFT, CONTROL
+    "D",        CMD_DELALLENTRY, CHAR, SHIFT, CONTROL
+    VK_F4,      IDM_EDITSEL, VIRTUALKEY
+    VK_ENTER,   IDM_SEARCH, VIRTUALKEY
+    VK_F3,      IDM_SEARCH, VIRTUALKEY
+    VK_F2,      IDM_OPENCLI, VIRTUALKEY
+END
+
+MENU WIN_MAIN
+BEGIN
+
+    SUBMENU "~File",                   IDM_FILE, MIS_TEXT
+    BEGIN
+        MENUITEM "~Open...",           IDM_OPEN, MIS_TEXT, MIA_DISABLED
+        MENUITEM SEPARATOR
+        MENUITEM "~Save\tCtrl+S",      IDM_SAVE, MIS_TEXT, MIA_DISABLED
+        MENUITEM "Save ~as...",        IDM_SAVEAS, MIS_TEXT, MIA_DISABLED
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit",              IDM_EXIT, MIS_TEXT
+    END
+
+    SUBMENU "~Edit",                   IDM_EDIT, MIS_TEXT
+    BEGIN
+        MENUITEM "Cu~t\tCtrl+X",       IDM_CUT, MIS_TEXT, MIA_DISABLED
+        MENUITEM "~Copy",              IDM_COPY, MIS_TEXT, MIA_DISABLED
+        MENUITEM "~Paste\tCtrl+V",     IDM_PASTE, MIS_TEXT, MIA_DISABLED
+    END
+
+    SUBMENU "~Selected",               IDM_SELECTED, MIS_TEXT
+    BEGIN
+        MENUITEM "~Edit\tCtrl+E/F4",   IDM_EDITSEL, MIS_TEXT
+        MENUITEM "~Open\tCtrl+O",      IDM_OPENSEL, MIS_TEXT
+        MENUITEM SEPARATOR
+        MENUITEM "~Copy to clipboard\tCtrl+C", IDM_COPYFNAMES, MIS_TEXT
+        MENUITEM "Copy whole l~ine to clipboard\tCtrl+Shift+C", IDM_COPYLINE,
+                 MIS_TEXT
+        MENUITEM "Copy ~all to clipboard\tCtrl+Alt+C", IDM_COPYALLFNAMES,
+                 MIS_TEXT, MIA_DISABLED
+        MENUITEM SEPARATOR
+        MENUITEM "Open ~folder\tCtrl+F", IDM_OPENDIR, MIS_TEXT
+        MENUITEM "Open command ~line\tCtrl+L/F2", IDM_OPENCLI, MIS_TEXT
+        MENUITEM "Open ~settings\tCtrl+P", IDM_PROPERTIES, MIS_TEXT
+    END
+
+    SUBMENU "~View",                   IDM_VIEW, MIS_TEXT
+    BEGIN
+        MENUITEM "D~o not sort",       IDM_VSORTNONE, MIS_TEXT, MIA_CHECKED
+        MENUITEM "Sort ~ascending",    IDM_VSORTASCEND, MIS_TEXT
+        MENUITEM "Sort d~escending",   IDM_VSORTDESCEND, MIS_TEXT
+        MENUITEM SEPARATOR
+        MENUITEM "~Date",              IDM_VFDATE, MIS_TEXT, MIA_CHECKED
+        MENUITEM "~Time",              IDM_VFTIME, MIS_TEXT, MIA_CHECKED
+        MENUITEM "~Size",              IDM_VFSIZE, MIS_TEXT, MIA_CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "Line ~numbers",      IDM_VLINENO, MIS_TEXT, MIA_CHECKED
+        MENUITEM "St~rip spaces",      IDM_VNOSPACES, MIS_TEXT, MIA_CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "Settings~...",       IDM_SETTINGS, MIS_TEXT
+    END
+
+    SUBMENU "~Help",                   IDM_HELP, MIS_TEXT | MIS_HELP
+    BEGIN
+        MENUITEM "Help ~index",        IDM_HELPIDX, MIS_TEXT
+        MENUITEM SEPARATOR
+        MENUITEM "~Product information...", IDM_PRODINFO, MIS_TEXT
+    END
+END
+HELPSUBTABLE HLPS_MAIN
+SUBITEMSIZE 2
+BEGIN
+END
+
+HELPTABLE HLP_MAIN
+BEGIN
+    HELPITEM    WIN_MAIN,           HLPS_MAIN,           HLPS_MAIN_EXT
+END
+
+ICON        WIN_MAIN                           "\\_work\\DataSeeker\\trunk\\DataSeek.ico"
+MENU WIN_DRIVES
+BEGIN
+END
+
+WINDOWTEMPLATE WIN_DRIVES
+BEGIN
+    WINDOW "DRIVES", WIN_DRIVES, 68, 62, 166, 216, WC_FRAME, FS_NOBYTEALIGN |
+                FS_SIZEBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS, FCF_VERTSCROLL
+    PRESPARAMS PP_ACTIVETEXTFGNDCOLORINDEX, CLR_BLUE
+    PRESPARAMS PP_ACTIVETEXTBGNDCOLORINDEX, CLR_PALEGRAY
+    PRESPARAMS PP_INACTIVETEXTFGNDCOLORINDEX, CLR_BLACK
+    PRESPARAMS PP_INACTIVETEXTBGNDCOLORINDEX, CLR_PALEGRAY
+    PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    PRESPARAMS PP_USER, "10.System Proportional"
+    BEGIN
+        CONTROL "",                    LB_DRIVES, 104, 34, 50, 110, WC_LISTBOX,
+                                            LS_NOADJUSTPOS | LS_MULTIPLESEL |
+                                            LS_OWNERDRAW | LS_HORZSCROLL |
+                                            LS_EXTENDEDSEL | WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_BLACK
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_PALEGRAY
+                PRESPARAMS PP_HILITEFOREGROUNDCOLORINDEX, CLR_BLACK
+                PRESPARAMS PP_HILITEBACKGROUNDCOLORINDEX, CLR_DARKCYAN
+                PRESPARAMS PP_DISABLEDFOREGROUNDCOLORINDEX, CLR_DARKPINK
+                PRESPARAMS PP_DISABLEDBACKGROUNDCOLORINDEX, CLR_PALEGRAY
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "",                    LB_DRIVES_RECT, 49, 10, 81, 8, WC_STATIC,
+                                            SS_FGNDRECT | WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_BLUE
+        CONTROL "Harddisks",           CB_LBOX_FIRST, 6, 186, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "Network drives",      CB_LBOX1, 6, 174, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "CD/DVD drives",       CB_LBOX2, 6, 162, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "Zip/EZ/Jaz drives",   CB_LBOX3, 6, 150, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "ALL DRIVES",          CB_LBOX4, 6, 138, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "A:",                  CB_LBOX6, 6, 116, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "B:",                  CB_LBOX7, 6, 104, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "C:",                  CB_LBOX8, 6, 92, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "D:",                  CB_LBOX9, 6, 80, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "E:",                  CB_LBOX10, 6, 68, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "F:",                  CB_LBOX11, 6, 56, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "G:",                  CB_LBOX12, 6, 44, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "H:",                  CB_LBOX13, 6, 32, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "I:",                  CB_LBOX14, 6, 23, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "J:",                  CB_LBOX15, 6, 14, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "K:",                  CB_LBOX16, 6, 6, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "L:",                  CB_LBOX17, 61, 186, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "M:",                  CB_LBOX18, 61, 177, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "N:",                  CB_LBOX19, 61, 166, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "O:",                  CB_LBOX20, 61, 156, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "P:",                  CB_LBOX21, 61, 146, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "Q:",                  CB_LBOX22, 61, 137, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "R:",                  CB_LBOX23, 61, 126, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "S:",                  CB_LBOX24, 61, 118, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "T:",                  CB_LBOX25, 61, 108, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "U:",                  CB_LBOX26, 61, 98, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "V:",                  CB_LBOX27, 61, 88, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "W:",                  CB_LBOX28, 61, 79, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "X:",                  CB_LBOX29, 61, 69, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "Y:",                  CB_LBOX30, 61, 59, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "Z:",                  CB_LBOX31, 61, 49, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "LB_invalid",          CB_LBOX_LAST, 62, 39, 38, 10, WC_BUTTON,
+                                            BS_CHECKBOX | WS_TABSTOP
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "LBOX5",               CB_LBOX5, 7, 127, 38, 12, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_NOBORDER |
+                                            WS_TABSTOP | WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    END
+END
+
+
+DLGTEMPLATE DLG_SETTINGS
+BEGIN
+    DIALOG "Data Seeker settings", DLG_SETTINGS, 18, 55, 292, 168,
+                FS_NOBYTEALIGN | FS_DLGBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS |
+                WS_VISIBLE, FCF_TITLEBAR | FCF_SYSMENU | FCF_TASKLIST
+    PRESPARAMS PP_USER, "10.System Proportional"
+    BEGIN
+        CONTROL "Search",              GB_DEFAULTSEARCHOPTIONS, 4, 86, 141, 76,
+                                            WC_STATIC, SS_GROUPBOX | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "~Recursive search",   CB_SETRECUR, 11, 140, 118, 10, WC_BUTTON,
+                                            BS_AUTOCHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                CTLDATA 6, 1, 0
+        CONTROL "E~xclude binary files", CB_SETTEXTONLY, 11, 130, 118, 10,
+                                            WC_BUTTON, BS_AUTOCHECKBOX |
+                                            WS_TABSTOP | WS_VISIBLE
+                CTLDATA 6, 1, 0
+        CONTROL "Case ~insensitive",   CB_SETCASEINS, 11, 120, 118, 10,
+                                            WC_BUTTON, BS_AUTOCHECKBOX |
+                                            WS_TABSTOP | WS_VISIBLE
+                CTLDATA 6, 1, 0
+        CONTROL "~Boolean operators",  CB_SETBOOLOP, 11, 110, 118, 10,
+                                            WC_BUTTON, BS_AUTOCHECKBOX |
+                                            WS_TABSTOP | WS_VISIBLE
+        CONTROL "General",             GB_GENERALOPTIONS, 4, 20, 284, 64,
+                                            WC_STATIC, SS_GROUPBOX | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "~Edit files with",    ST_EDITFILESWITH, 11, 64, 208, 8,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_TOP | DT_MNEMONIC | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "EPM.EXE",             EF_SETEDIT, 12, 53, 184, 8,
+                                            WC_ENTRYFIELD, ES_AUTOSCROLL |
+                                            ES_MARGIN | WS_TABSTOP | WS_VISIBLE
+                CTLDATA 8, 256, 0, 0
+        CONTROL "...",                 PB_SETEDIT, 201, 51, 18, 12, WC_BUTTON,
+                                            BS_PUSHBUTTON | WS_TABSTOP |
+                                            WS_DISABLED
+        CONTROL "C~ommand shell",      ST_COMMANDSHELL, 11, 37, 208, 8,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_TOP | DT_MNEMONIC | WS_GROUP |
+                                            WS_VISIBLE
+        CONTROL "CMD.EXE",             EF_SETCLISHELL, 12, 26, 184, 8,
+                                            WC_ENTRYFIELD, ES_AUTOSCROLL |
+                                            ES_MARGIN | WS_TABSTOP | WS_VISIBLE
+                CTLDATA 8, 256, 0, 0
+        CONTROL "...",                 PB_SETCLISHELL, 201, 24, 18, 12,
+                                            WC_BUTTON, BS_PUSHBUTTON |
+                                            WS_TABSTOP | WS_DISABLED
+        CONTROL "~OK",                 DID_OK, 4, 2, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_TABSTOP | WS_VISIBLE
+        CONTROL "~Cancel",             DID_CANCEL, 56, 2, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | WS_TABSTOP |
+                                            WS_VISIBLE
+        CONTROL "Help",                PB_SETHELP, 144, 2, 50, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_HELP |
+                                            WS_TABSTOP
+        CONTROL "History",             GB_HISTORY, 148, 86, 140, 76, WC_STATIC,
+                                            SS_GROUPBOX | WS_GROUP | WS_VISIBLE
+        CONTROL "History",             SPB_SETHISTORY, 256, 141, 26, 9,
+                                            WC_SPINBUTTON, SPBS_MASTER |
+                                            SPBS_JUSTRIGHT | SPBS_NUMERICONLY |
+                                            WS_TABSTOP | WS_VISIBLE
+                CTLDATA 24, 0, 0, 0, 1, 0, 50, 0, 0, 0, 0, 0
+        CONTROL "~Sort entries",       CB_SORTHISTORYENTRIES, 155, 130, 100, 10,
+                                            WC_BUTTON, BS_CHECKBOX | WS_TABSTOP |
+                                            WS_DISABLED
+        CONTROL "~Maximum entries",    ST_MAXIMUMENTRIES, 155, 140, 90, 10,
+                                            WC_STATIC, SS_TEXT | DT_LEFT |
+                                            DT_VCENTER | DT_MNEMONIC |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLORINDEX, CLR_BLACK
+        CONTROL "Search for ~folder names too", CB_SETDIRSEARCH,
+                                        11, 100, 132, 10, WC_BUTTON,
+                                            BS_AUTOCHECKBOX | WS_TABSTOP |
+                                            WS_VISIBLE
+                CTLDATA 6, 1, 0
+    END
+END
+
+MENU PU_MAIN MOVEABLE DISCARDABLE
+BEGIN
+    MENUITEM "~Recursive search",      PU_IDM_SETRECUR, MIS_TEXT
+    MENUITEM "E~xclude binary files",  PU_IDM_SETTEXTONLY, MIS_TEXT
+    MENUITEM "Case ~insensitive",      PU_IDM_SETCASEINS, MIS_TEXT
+    MENUITEM "~Boolean operators",     PU_IDM_SETBOOLOP, MIS_TEXT
+    MENUITEM "Search for ~folder names too", PU_IDM_SETDIRSEARCH, MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "D~o not sort",           PU_IDM_VSORTNONE, MIS_TEXT
+    MENUITEM "Sort ~ascending",        PU_IDM_VSORTASCEND, MIS_TEXT
+    MENUITEM "Sort d~escending",       PU_IDM_VSORTDESCEND, MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~Date",                  PU_IDM_VFDATE, MIS_TEXT
+    MENUITEM "~Time",                  PU_IDM_VFTIME, MIS_TEXT
+    MENUITEM "~Size",                  PU_IDM_VFSIZE, MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "Line ~numbers",          PU_IDM_VLINENO, MIS_TEXT
+    MENUITEM "St~rip spaces",          PU_IDM_VNOSPACES, MIS_TEXT
+END
+
+MENU PU_LBOX MOVEABLE DISCARDABLE
+BEGIN
+    MENUITEM "~Edit",                  PU_IDM_EDITSEL, MIS_TEXT
+    MENUITEM "~Open",                  PU_IDM_OPENSEL, MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~Copy to clipboard",     PU_IDM_COPYFNAMES, MIS_TEXT
+    MENUITEM "Copy whole l~ine to clipboard", PU_IDM_COPYLINE, MIS_TEXT
+    MENUITEM "Copy ~all to clipboard", PU_IDM_COPYALLFNAMES, MIS_TEXT,
+             MIA_DISABLED
+    MENUITEM SEPARATOR
+    MENUITEM "Open ~folder",           PU_IDM_OPENDIR, MIS_TEXT
+    MENUITEM "Open command ~line",     PU_IDM_OPENCLI, MIS_TEXT
+    MENUITEM "Open ~settings",         PU_IDM_PROPERTIES, MIS_TEXT
+END
+
+
+DLGTEMPLATE DLG_FOC_FAIL
+BEGIN
+    DIALOG "Data Seeker", DLG_FOC_FAIL, 0, 0, 280, 75, FS_NOBYTEALIGN |
+                FS_MOUSEALIGN | FS_DLGBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS |
+                WS_VISIBLE, FCF_TITLEBAR | FCF_SYSMENU
+    PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    PRESPARAMS PP_USER, "10.System Proportional"
+    BEGIN
+        CONTROL "",                    102, 56, 49, 118, 0, WC_STATIC,
+                                            SS_FGNDRECT | WS_GROUP | WS_VISIBLE
+                PRESPARAMS PP_FOREGROUNDCOLOR, 0x00808080
+        CONTROL "~Close",              DID_OK, 110, 3, 60, 13, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_DEFAULT |
+                                            WS_TABSTOP | WS_VISIBLE
+        CONTROL WIN_MAIN,              WIN_MAIN, 11, 53, 16, 15, WC_STATIC,
+                                            SS_ICON | WS_GROUP | WS_VISIBLE
+        CONTROL "",                    MLE_FOC_FAIL, 34, 22, 240, 46, WC_MLE,
+                                            MLS_IGNORETAB | MLS_READONLY |
+                                            MLS_VSCROLL | MLS_WORDWRAP |
+                                            WS_TABSTOP | WS_VISIBLE | MLS_LIMITVSCROLL
+                CTLDATA 32, 0, 1024, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                PRESPARAMS PP_BACKGROUNDCOLORINDEX, CLR_PALEGRAY
+    END
+END
+
+/* add | MLS_LIMITVSCROLL to MLE, URE does not do it */
+

@@ -1,0 +1,215 @@
+[COMPILER]
+MACRO=\n
+FILTEREXPANSION=1 1 1 0 1
+compile=concur|capture|:Compile:&Compile,wmake %n.obj
+make=concur|capture|clear|:Build:&Build,make.cmd
+rebuild=concur|capture|:Rebuild:&Rebuild,wmake /A
+debug=:Debug:&Debug,wdw DataSeek.exe
+execute=:Execute:E&xecute,DataSeek.exe
+user1=hide|:User 1:User 1,
+user2=hide|:User 2:User 2,
+usertool_resource_editor=hide|:Resource Editor:Resource Editor,dlgedit
+usertool_makerelease=hide|savenone|:MakeRelease:&MakeRelease,make_release.cmd
+workingdir=E:\_work\DataSeeker\trunk\
+includedirs=%(INCLUDE)
+tagfiles=
+reffile=
+[FILES]
+E:\_work\DataSeeker\trunk\aFoc.c
+E:\_work\DataSeeker\trunk\aFoc.h
+E:\_work\DataSeeker\trunk\application.c
+E:\_work\DataSeeker\trunk\application.h
+E:\_work\DataSeeker\trunk\build.h
+E:\_work\DataSeeker\trunk\build.txt
+E:\_work\DataSeeker\trunk\commands.c
+E:\_work\DataSeeker\trunk\commands.h
+E:\_work\DataSeeker\trunk\COPYING
+E:\_work\DataSeeker\trunk\dataseek.def
+E:\_work\DataSeeker\trunk\DataSeeker.Rc
+E:\_work\DataSeeker\trunk\DataSeeker.RES
+E:\_work\DataSeeker\trunk\dosh.h
+E:\_work\DataSeeker\trunk\DriveInfo.c
+E:\_work\DataSeeker\trunk\driveinfo.h
+E:\_work\DataSeeker\trunk\dummy.h
+E:\_work\DataSeeker\trunk\ecolange.h
+E:\_work\DataSeeker\trunk\exceptq.h
+E:\_work\DataSeeker\trunk\fileUtil.c
+E:\_work\DataSeeker\trunk\fileUtil.h
+E:\_work\DataSeeker\trunk\foc.h
+E:\_work\DataSeeker\trunk\initEnd.c
+E:\_work\DataSeeker\trunk\initend.h
+E:\_work\DataSeeker\trunk\layout.c
+E:\_work\DataSeeker\trunk\layout.h
+E:\_work\DataSeeker\trunk\libdata.h
+E:\_work\DataSeeker\trunk\loadsave.c
+E:\_work\DataSeeker\trunk\loadsave.h
+E:\_work\DataSeeker\trunk\make.cmd
+E:\_work\DataSeeker\trunk\make_buildlevel.cmd
+E:\_work\DataSeeker\trunk\make_release.cmd
+E:\_work\DataSeeker\trunk\make_release_RU.cmd
+E:\_work\DataSeeker\trunk\makefile
+E:\_work\DataSeeker\trunk\makefile.watcom
+E:\_work\DataSeeker\trunk\memmgr.c
+E:\_work\DataSeeker\trunk\memmgr.h
+E:\_work\DataSeeker\trunk\nls.c
+E:\_work\DataSeeker\trunk\NLS.h
+E:\_work\DataSeeker\trunk\objwin.c
+E:\_work\DataSeeker\trunk\objwin.h
+E:\_work\DataSeeker\trunk\openmode.h
+E:\_work\DataSeeker\trunk\PLList.c
+E:\_work\DataSeeker\trunk\PLList.h
+E:\_work\DataSeeker\trunk\pmaux.c
+E:\_work\DataSeeker\trunk\pmaux.h
+E:\_work\DataSeeker\trunk\pmseek.c
+E:\_work\DataSeeker\trunk\pmseek.H
+E:\_work\DataSeeker\trunk\pmutil.c
+E:\_work\DataSeeker\trunk\pmutil.h
+E:\_work\DataSeeker\trunk\prodinfo.c
+E:\_work\DataSeeker\trunk\prodinfo.h
+E:\_work\DataSeeker\trunk\profile.h
+E:\_work\DataSeeker\trunk\RBUILD.cmd
+E:\_work\DataSeeker\trunk\ReadMe
+E:\_work\DataSeeker\trunk\resid.h
+E:\_work\DataSeeker\trunk\SampleStrings
+E:\_work\DataSeeker\trunk\searchdata.c
+E:\_work\DataSeeker\trunk\searchdata.h
+E:\_work\DataSeeker\trunk\settings.c
+E:\_work\DataSeeker\trunk\settings.h
+E:\_work\DataSeeker\trunk\srchdata.h
+E:\_work\DataSeeker\trunk\stringObj.c
+E:\_work\DataSeeker\trunk\stringObj.h
+E:\_work\DataSeeker\trunk\stringUtil.c
+E:\_work\DataSeeker\trunk\stringUtil.h
+E:\_work\DataSeeker\trunk\subclass.c
+E:\_work\DataSeeker\trunk\subclass.h
+E:\_work\DataSeeker\trunk\SYBASE_OW_LICENSE
+E:\_work\DataSeeker\trunk\ToDo.txt
+E:\_work\DataSeeker\trunk\wordarray.c
+E:\_work\DataSeeker\trunk\wordarray.h
+E:\_work\DataSeeker\trunk\wrapper_sw.c
+E:\_work\DataSeeker\trunk\wrappers.c
+E:\_work\DataSeeker\trunk\wrappers.h
+E:\_work\DataSeeker\trunk\include\ApiExBase.h
+E:\_work\DataSeeker\trunk\include\ApiExGPI.h
+E:\_work\DataSeeker\trunk\include\ApiExPM.h
+E:\_work\DataSeeker\trunk\NLS\copy_template.cmd
+E:\_work\DataSeeker\trunk\NLS\de_DE
+E:\_work\DataSeeker\trunk\NLS\EN_US
+E:\_work\DataSeeker\trunk\NLS\ES_ES
+E:\_work\DataSeeker\trunk\NLS\FR_FR
+E:\_work\DataSeeker\trunk\NLS\IT_IT
+E:\_work\DataSeeker\trunk\NLS\JA_JP
+E:\_work\DataSeeker\trunk\NLS\NL_NL
+E:\_work\DataSeeker\trunk\NLS\NLS_TEMPLATE
+E:\_work\DataSeeker\trunk\NLS\RU_RU
+E:\_work\DataSeeker\trunk\NLS\SV_SE
+E:\_work\DataSeeker\trunk\NLS\ZH_CN
+E:\_work\DataSeeker\trunk\NLS\ZH_TW
+E:\_work\DataSeeker\trunk\translation\dataseek.IPF
+E:\_work\DataSeeker\trunk\Translation\translator.txt
+E:\C\INCLUDE\PMPRINTF.H
+[ASSOCIATION]
+[STATE]
+SCREEN: 3840 1200 60 30 1794 1107 0 0 N 0 0 0 0 1474 1022
+CWD: E:\_work\DataSeeker\trunk
+BUFFER: BN="P:\UTIL\VISUALSLICKEDIT40\OS2\vrestore.slk"
+BI: MA=1 254 1  TABS=1 9  WWS=3 IWT=0 ST=0 IN=0 BW=0 US=0 RO=0 SE=0 SN=0 BIN=0 MN=Fundamental	HM=0 MF=1
+VIEW: LN=.0 CL=1 LE=0 CX=1 CY=1 WI=5 BI=34 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\ToDo.txt"
+BI: MA=1 80 1  TABS=1 3  WWS=3 IWT=0 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=txt	HM=0 MF=8
+VIEW: LN=.2343 CL=6 LE=0 CX=6 CY=0 WI=5 BI=24 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\make.cmd"
+BI: MA=1 74 1  TABS=1 3  WWS=0 IWT=0 ST=0 IN=2 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=Rexx	HM=0 MF=8
+VIEW: LN=.213 CL=12 LE=0 CX=12 CY=12 WI=5 BI=23 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\layout.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=8
+VIEW: LN=.19316 CL=8 LE=0 CX=8 CY=21 WI=5 BI=22 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\aFoc.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=8
+VIEW: LN=.9478 CL=23 LE=0 CX=23 CY=10 WI=5 BI=21 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\pmseek.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=634
+VIEW: LN=.2694 CL=84 LE=0 CX=84 CY=19 WI=5 BI=20 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\build.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=616
+VIEW: LN=.0 CL=1 LE=0 CX=1 CY=1 WI=5 BI=4 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\prodinfo.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=40
+VIEW: LN=.0 CL=1 LE=0 CX=1 CY=1 WI=5 BI=27 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\make_release.cmd"
+BI: MA=1 74 1  TABS=1 3  WWS=0 IWT=0 ST=0 IN=2 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=Rexx	HM=0 MF=42
+VIEW: LN=.722 CL=29 LE=0 CX=29 CY=29 WI=5 BI=28 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\pmseek.H"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=618
+VIEW: LN=.551 CL=38 LE=0 CX=38 CY=14 WI=5 BI=29 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\ReadMe"
+BI: MA=1 120 1  TABS=1 5  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=Fundamental	HM=0 MF=512
+VIEW: LN=.6363 CL=67 LE=0 CX=67 CY=23 WI=5 BI=30 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\DriveInfo.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=8
+VIEW: LN=.3714 CL=81 LE=0 CX=81 CY=31 WI=5 BI=18 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\makefile"
+BI: MA=1 250 1  TABS=1 5  WWS=3 IWT=0 ST=0 IN=2 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=mak	HM=0 MF=512
+VIEW: LN=.5236 CL=32 LE=0 CX=32 CY=30 WI=5 BI=25 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\dataseek114.txt"
+BI: MA=1 80 1  TABS=1 3  WWS=3 IWT=0 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=txt	HM=0 MF=512
+VIEW: LN=.355 CL=77 LE=0 CX=77 CY=6 WI=5 BI=31 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="E:\_work\DataSeeker\trunk\translation\dataseek.IPF"
+BI: MA=1 120 1  TABS=1 5  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=10000 RO=0 SE=1 SN=0 BIN=0 MN=Fundamental	HM=0 MF=515
+VIEW: LN=.4626 CL=1 LE=0 CX=1 CY=23 WI=5 BI=32 HT=0 HN=0 HF=0 HC=4
+WINDOW: 192 200 1153 689 -1 -1 N  WF=0 WT=13 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\dataseek114.txt"
+VIEW: LN=.355 CL=77 LE=0 CX=83 CY=6 WI=176 BI=31 HT=0 HN=0 HF=0 HC=4
+WINDOW: 216 69 989 845 -1 -1 N  WF=0 WT=2 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\makefile"
+VIEW: LN=.5236 CL=32 LE=0 CX=38 CY=30 WI=123 BI=25 HT=0 HN=0 HF=0 HC=4
+WINDOW: 16 58 994 689 -1 -1 N  WF=0 WT=15 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\ReadMe"
+VIEW: LN=.6364 CL=68 LE=0 CX=74 CY=25 WI=130 BI=30 HT=0 HN=0 HF=0 HC=4
+WINDOW: 24 25 989 689 -1 -1 N  WF=0 WT=3 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\aFoc.c"
+VIEW: LN=.9478 CL=23 LE=0 CX=29 CY=10 WI=120 BI=21 HT=0 HN=0 HF=0 HC=4
+WINDOW: 48 50 989 689 -1 -1 N  WF=0 WT=4 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\layout.c"
+VIEW: LN=.19316 CL=8 LE=0 CX=14 CY=21 WI=119 BI=22 HT=0 HN=0 HF=0 HC=4
+WINDOW: 284 108 989 689 -1 -1 N  WF=0 WT=6 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\make.cmd"
+VIEW: LN=.213 CL=12 LE=0 CX=18 CY=12 WI=118 BI=23 HT=0 HN=0 HF=0 HC=4
+WINDOW: 168 145 989 689 93 952 I  WF=0 WT=8 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\ToDo.txt"
+VIEW: LN=.2343 CL=6 LE=0 CX=8167625 CY=0 WI=117 BI=24 HT=0 HN=0 HF=0 HC=4
+WINDOW: 370 3 1057 999 -1 -1 N  WF=0 WT=5 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\DriveInfo.c"
+VIEW: LN=.3714 CL=81 LE=0 CX=87 CY=31 WI=122 BI=18 HT=0 HN=0 HF=0 HC=4
+WINDOW: 96 100 994 689 -1 -1 N  WF=0 WT=12 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\pmseek.H"
+VIEW: LN=.293 CL=64 LE=0 CX=70 CY=5 WI=172 BI=29 HT=0 HN=0 HF=0 HC=4
+WINDOW: 235 101 994 689 304 982 I  WF=0 WT=11 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\make_release.cmd"
+VIEW: LN=.722 CL=29 LE=0 CX=8167631 CY=29 WI=173 BI=28 HT=0 HN=0 HF=0 HC=4
+WINDOW: 24 25 994 689 -1 -1 N  WF=0 WT=10 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\prodinfo.h"
+VIEW: LN=.0 CL=1 LE=0 CX=7 CY=1 WI=171 BI=27 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 994 689 -1 -1 N  WF=0 WT=9 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\build.h"
+VIEW: LN=.0 CL=1 LE=0 CX=7 CY=1 WI=170 BI=4 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 1058 1014 -1 -1 N  WF=0 WT=1 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\pmseek.c"
+VIEW: LN=.2694 CL=84 LE=0 CX=90 CY=19 WI=121 BI=20 HT=0 HN=0 HF=0 HC=4
+WINDOW: 392 308 994 689 -1 -1 N  WF=0 WT=14 "System VIO,6,0,1"
+BUFFER: BN="E:\_work\DataSeeker\trunk\translation\dataseek.IPF"
+VIEW: LN=.4504 CL=11 LE=0 CX=17 CY=21 WI=177 BI=32 HT=0 HN=0 HF=0 HC=4
+FILEHIST: 9
+E:\_work\DataSeeker\trunk\build.h
+E:\_work\DataSeeker\trunk\prodinfo.h
+E:\_work\DataSeeker\trunk\build.txt
+E:\_work\DataSeeker\trunk\pmseek.H
+E:\_work\DataSeeker\trunk\ReadMe
+E:\_work\DataSeeker\trunk\make_release.cmd
+E:\_work\DataSeeker\trunk\makefile
+E:\_work\DataSeeker\trunk\dataseek114.txt
+E:\_work\DataSeeker\trunk\translation\dataseek.IPF
+PRINTER: 2
+PRINTER: 2
+PRINTER: 2
+AUTOSAVE: 0

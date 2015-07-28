@@ -1,0 +1,347 @@
+DataSeeker - file / text seeker
+------------------------------------------------------------------------------
+Author:          Alessandro Cantatore / Andreas Buchinger
+Last update:     20141221
+Current status:  1.14
+Home page:       http://dataseeker.netlabs.org/en/site/index.xml
+Developers home: http://svn.netlabs.org/dataseeker
+
+As Alessandro Cantatore do not work any more on ACDataSeeker, I've asked him to
+give me the sources. He kindly agreed. So I've made my own build starting with
+his 0.46 version. Please report missing/broken functions in my build compared
+to Alessandros last version. If you like DataSeeker, please mail me a feedback
+and thank Alessandro for his generousity.
+
+There are only little help file updates from me. If you want to contribute and
+update the help file or make translations, drop me a mail. Starting with version
+1.0 I've included National Language Support via (eco)Lange. Requirements:
+eCo Software runtime (base) -- http://ecomstation.ru/ecosoft/runtime.php.
+
+DataSeeker subjects to Modified BSD License. Portions of code subjects to Sybase
+Open Watcom Public License.
+
+
+Prerequisite:
+-------------
+- OS/2 or eCS. Warp 3 and up. I've tested mainly with eCS2.1DE and eCS1.2r
+- MMPMCRTS.DLL and SW.DLL from the OS/2 Multimedia subsystem (usually found
+  in x:\MMOS2\DLL\). See Q5: below
+
+Optional components:
+--------------------
+- The debug version DataSeeker_debug.exe needs PmPrintf.dll. Get it from hobbes
+  (PMPrintf253.zip or newer)
+- For debbuging reports in case of a crash exceptq.dll v7.1 is required. Please
+  install exceptq71.zip or newer from f.i. hobbes before you report crashes and
+  include the *.TRP file created in the directory DataSeek.exe resides.
+
+Thes following components are usually installed on newer systems by default. If
+not DataSeeker works but some functionality is disabled
+- For National Language Support ECOLANGE.DLL is required. It is included in
+  eCo Software runtime (base)
+- For file/dir selection with '...' button FOC.DLL is required. It is included
+  in eCo Software runtime (win). For an updated foc.nls see Q3: below.
+
+
+Installation:
+-------------
+See help file. (Unziping and dragging a reference on your desktop is okay)
+
+
+Questions / answeres :
+----------------------
+Q1: Pop-up menu do not work / works only on some areas
+A1: Add DataSeek.exe to DragText - Setup - Disable list and disable Drag for
+  Entry Fields, List Boxes, Combo Boxes and Static Text
+
+Q2: How to change the language used by DataSeeker
+A2: The ecoruntime uses the enviroment variable LANG to determine which language
+  to use. LANG is usually set in your config.sys but you can change it in a
+  command shell prior of starting DataSeeker. In this case DataSeeker have to
+  be started from the very same command shell. Of course the translation into
+  the selected language have to be made prior. Currently DataSeeker supports
+  English, French, Spanish, Nederlands, Russia and German. See Translator.txt
+  for info how to translate into other languages. If ecolange.dll is not found
+  on your system translation do not work. Check the About dialog.
+
+Q3: All texts are displayed in my native language but in the FOC dialog all
+  or some text is displayed in English (f.i. with german Systems Cancel button)
+  even with correct text in the XX_XX language file
+A3: Translations for FOC dialog is not handled by DataSeeker. Exceptions are the
+  title bar and OK button. Translation for other text is usually located in
+  x:\ecs\lang\foc.nls. Ask eCoSoft for an updated version for your language.
+  German users may download a corrected version at
+  http://web.utanet.at/abuchin1/Download/foc.nls
+
+Q4: What does the red box mean labeled 'No more than xx search criteria allowed'
+A4: There's a limited number of different files/strings to search in one pass.
+  You may reach the internal limit especially when you select a lot of drive
+  letters in the drive selection dialog. Remember, each file definition entered
+  in the 'Files to search' field separeted by the OR operator ( | ) is searched
+  on all selected drives which gives Files x Drives search criteria. f.i.
+  searching for files '*txt|rea*|*repor*|*feedback*' on 15 drives at the
+  same time will end up in 60 search criteria!
+
+Q5: MMPMCRTS.DLL, SW.DLL...
+A5: These dlls are part of the OS/2 - eCS Multimedia subsystem. If you have not
+  installed MM support on your system please extract these dlls from your eCS -
+  OS/2 installation medium. Starting with 0.51b DataSeeker can not work without
+  these dlls.
+
+Q6: What's the DataSeek_debug.exe? Or, why does it not start?
+A6: The debug version prints some debugging messages to Dennis Bareis PMPRINTF.
+  You can download a modified version from hobbes or my home page. You need
+  pmprintf.dll somewhere in your libpath. If it isn't found, DataSeek_debug.exe
+  can't work. I like to say A BIG THANK YOU TO DENNIS FOR HIS INVALUABLE TOOL.
+  Pmprintf will give you some infos what DataSeeker does and in case of
+  problems, maybe it gives you some clue what's going wrong. It may be usefull
+  too if you have troubles to find out how boolean operations works on search
+  arguments ;-)
+
+Q7: What are the F, H, N, C... in front of the drive letters in the drives menu?
+A7: Means Floppy, Harddisk, Network, CD-ROM... It is planned to show an icon in
+  front of the drive letter instead of this character in a future version.
+
+Q8: DataSeeker does not start - the system seems to hang instead
+A8: Try to kill the DataSeeker process (f.i. with TOP started from CAD-handler
+  which is usually installed with eCS) or wait 10s and delete DataSeek.INI then.
+
+Q9: My file history lists are gone after installing the newest version
+A9: When the ini file format changes as with version 1.10 not all old settings
+  can be savely imported. There is a risk of application trap when importing
+  these lists from older ini files so I've disable this. This is only an issue
+  when starting the new version the first time. Afterwards the lists are
+  restored as usual. See Q8: above also.
+
+
+History:
+--------
+20141221 1.14
+fixed
+- Trap when minimize/maximize for release builds
+- Exceptq logs now have valid symbols
+changed
+- Distributed under 'Modified BSD License' as described in COPYING
+
+20140602 1.13
+fixed
+- Up/Down Icons, sorry no clue why they got corrupted
+
+20140531 1.12
+added
+- some usefull accelerators, F2 to open command line, F4 to edit file,
+  F3 or ENTER to start searching
+changed
+- command line setting can now handle parameters.
+  f.i. 'p:\4os2\4os2.exe @p:\4os2\4os2.ini "p:\4os2\4start.cmd & mode 81,101"'
+  starts p:\4os2\4os2.exe with the rest of the line passed as parameter in
+  directory of selected find result
+fixed
+- trap with DEBUG build and no search result
+
+20120419 1.11:
+added
+- code page switching depending on system setting
+
+20111227 1.10:
+added
+- FOC - File Open Container for selecting search file/path
+- Dutch version (including .hlp, thanks Jacques van Leeuwen)
+- Russian version (thanks Eugene Gorbunoff and Andrea). Though not sure if it
+  works cause on my machine I see no cyrillic characters.
+- foc.nls with corrected german translation
+- new option to find directory names too when searching for files
+changed
+- reworked Drives dialog, now updates drives on the fly even when dialog is
+  visible, size now depends on number of available drives
+- makefile clean up
+- cosmetic changes in product info dialog
+- ini file format, sorry old history lists can not be imported
+- exception handling from xwp code to more powerful exceptq v7.1
+fixed
+- wrong text in 'Drives' button as long as not all drives are available
+- trap when maximize/minimize
+- wrong calculation for decision if moving window is required at startup
+
+20100602 1.01:
+added
+- Spanish version (thanks Salvador Parra Camacho)
+- bldlevel string
+changed
+- memory allocation grow step size from 512kB to 1MB
+fixed
+- translation for some strings was missing
+
+20100321 1.00:
+added
+- National Language Support via (eco)lange
+- French version (thanks Guillaume Gay)
+- Pop-up menus
+- ESC closes list boxes (Combo-Boxes) and Drives window
+- reenabled CTRL-D / CTRL-SHFT-D to delete items in Combo-Boxes
+- new drive type RSJ '*' (CDWFS)
+changed
+- settings dialog
+- double click on found file opens it instead of edit
+fixed
+- crash <DEL> key in History drop down entry field
+- position/size restore especially after reboot
+- copy filename (Selected - edit/open...) bug after changing sort order
+- ALT-F4 / ALT-F7 work around at startup
+- crash when pressing F1 while menu is open
+- refresh of WinDrives dialog (with removed and erroneous drives)
+
+20091228 0.54b: sorry I discovered a stupid bug in 0.53
+fixed
+- crash when drive is specified and only 1 file search criteria
+- no drives but backslash defined leads to wrong double \\
+
+20090923 0.53b - Christmas Edition:
+changed
+- increased max. | (OR) operations on 'files to search' from 2 to 50
+- max. characters in list boxes increased to 512
+- linked with IBMCPP3.65 multi-threading libraries
+- DosCreateThread changed to _beginthread
+- switch to standard library memory management
+- cleaned up 'LFS capable system detection' code
+- tested with more than 15 drives and more than 16.000 matching files
+added
+- exception handling with xwphelpers functions - create a log file (helpers36.lib)
+- list handling - max. number of iterations added
+- info area (error display)
+fixed
+- various bug fixes which destroyed heap and so produced weird behaviour
+- options safe routine
+- work around for ComboBox bug with more than 256 chars per line
+
+20090823 0.52b:
+0.52b is a major step towards 1.0. There a only a few cosmetic changes left I
+like to do before I think 1.0 is ready. As the Large File support was more
+complex than expected, I like to make this version public for feedback if
+I've broken something. So give feedback
+- update of What's new section in help file
+- added large file (>= 2GB) support available since Warp Server for e-business
+- max. line length for text searches is now 5MB (text search in binary files)
+- tested with files up to 9.5GB and more than 30000 text matches
+- limited testing has been done with Warp3
+- fixed crash when try to start editor and no .ini entry is set for it
+
+20090319 0.51b:
+added
+- check on start if window is in visible area and move if not (f.i. if in
+  another xpager window)
+
+- Drive selection window which is been used when no drive specifier is entered
+  in 'Files to search for'
+
+- fixed ticket #2 - search options (recursive, case...) did not work without
+  close and reopen DataSeeker
+
+20081115 0.50b:
+fixed
+- ignore leading blanks in directory specification (This may be a problem, when
+  you have a directory name starting with a blank. If you want to search in such
+  a directory, start searching with the parent directory instead.)
+- prevent selection of first entry in Files found when user has scrolled or
+  selected a file during search
+- removed another few ':' in strings. Hope now found all ;-)
+- cosmetic change on Files found... Elapsed time string
+
+Note - I like to make this version public cause I plan to add a feature to
+search on 'default' drives if no drive is specified. I fear this will take
+considerable time so don't expect updates in the near future.
+
+20081115 0.49b:
+fixed
+- enclose filename with " for opening in MED or VS
+- <CTRL><P> (upper case) accelerator did not work
+
+added
+- <CTRL><C> copy filename enclosed with " to clipboard
+- <CTRL><SHIFT><C> copy selected line to clipboard
+
+
+20080903 0.48b:
+fixed
+- disable 'Selected' menu item on startup (crash when no file is selected)
+- CTRL-E, CTRL-P accelerators reenabled
+- appStart new flag to distinguish between editor/cli and WinSwitchToProgram
+  (window list pops up when starting editor, probably introduced with 0.47)
+
+changed
+- removed scroll bars
+- added ... to Settings menu item and removed : on various texts
+- removed sub menus from 'View'
+- Files/Text to search drop down box reduced size to not overlap Search button
+- calling EPM now with 'postme'
+- files/text search drop down list boxes - entries not sorted alphapeticaly any
+   more
+
+
+20080824 0.47b:
+
+changed
+- First build from me (Andreas Buchinger). Lot of changes were necessary to
+  build the GUI with URE. At this times, I don't want to build an application
+  without a useful GUI editor. On OS/2 I think URE is the only usable one.
+  There were a lot of changes necessary to get that beast compiled cleanly with
+  my build enviroment. So maybe I've some things broken. While rebuilding the
+  GUI, I've made some changes to the menus. I think they were not consistent
+  with usual OS/2 look and feel. So I've changed that.
+
+fixed
+- crash when no editor or cmd shell is found in ini file
+- crash when no editor or cmd shell is entered in settings dialog
+
+added
+- support for MED and VS (VisualSlickEdit) as editors (beside EPM)
+- select first found text entry to start editor with approbiate line when double
+   clicking on the file name
+- when opening a cmd shell, switch to it (put focus on the cli window)
+- add '*' if files to search is directory (simple check only - end with \ or :)
+- scroll bars for Files/Text found list boxes
+
+0.46:
+last version from Alessandro Cantatore I'm aware of
+
+
+Copyright:
+----------
+See help file.
+
+
+Disclaimer:
+-----------
+WITH THIS SOFTWARE YOU CAN CRASH YOUR COMPUTER, DELETE YOUR DATA, OR EVEN
+DAMAGE SOME PIECES OF HARDWARE. USE IT WITH CARE. This software works for me
+and it should work on all PC compatible hardware running any version of OS/2.
+I've tested it on eComStation 2.0rcX with newest kernel (Jul. 2008). Don't make
+me responsible for any problem you have with this software.
+
+
+Last but not least:
+-------------------
+You can mail me if you have problems or when you have success (hopefully) with
+this software. I will try to help you if you've specific problems with my
+software. But only if you've read the readme/help files before.
+
+Doubtless you've found out, english is not my mother tongue. You can correct
+all errors in this text by yourself if you like ;-)
+
+If you speak german, conversation would be easier. So please send your comments
+in german or english. Of course you can send in any language you want, but
+don't expect an answere ;-) My Espanol, Dutch, Russian and Arab is not good
+enough for conversation. Danke, thanks, gracias, Dank u wel, Spassiva,
+Shokran...
+
+Special thanks to Alessandro Cantatore for making his work available to OS/2 -
+eCS users for free. Thanks to Andreas Schnellbacher for various GUI related
+inputs. And thanks to all people who gave me feedback and helped me on different
+newsgroups especially Steven Levine who answeres even the stupiest questions in
+a manner proper to the skills of the questioner.
+
+Andreas Buchinger, andi.os2.software@gmx.net
+DO NOT MAKE THIS EMAIL ADDRESS PUBLIC.
+DO NOT SEND ME ANY SORT OF ADVERTISING OR SPAM.
+(Unwanted advertising and spam is prohibited by law in my home country.
+Doing so can be fined)

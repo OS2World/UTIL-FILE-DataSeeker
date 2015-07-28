@@ -1,0 +1,180 @@
+; DataSeeker
+; eCoSoft LANGE file
+;
+; Language: Nederlands
+;
+; History:
+; 20100527 Jacques van Leeuwen (Dutch eComStation Test and Translation Group), initial based on EN_EN v20100208
+; 20111226 A. Buchinger, added FOC (missing translation)
+; 20140916 A. Buchinger, added license information
+;
+;
+; for translation into another language change the part right of the = sign
+; - lines up to max. 256 chars are allowed
+; - lines starting with ; are comments
+; - ~ means the next character is the accelerator character
+;
+; DO NOT CHANGE TEXT LEFT OF THE EQUAL SIGN (=), this is the key for finding your translated text
+; There is no need to translate comments (lines starting with ; )
+;
+; 234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...100...4567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...200...4567890123456789012345678901..236  max. length --->|
+;
+; **********************************************************************
+;   COMMON PART
+; **********************************************************************
+
+; some strings only used for debuging messages
+LANGUAGE=Nederlands
+
+TRANSLATOR_NAME=Jacques van Leeuwen (Dutch eComStation Test and Translation Group)
+LANGUAGE_VERSION=1.0
+LANGUAGE_DATE=20100527
+
+; help file name
+; _XX should reflect the language f.i. _FR means french
+HelpFile=DataSeek_NL.hlp
+
+; **********************************************************************
+;   About Dialog
+; **********************************************************************
+
+Version=Versie
+Build=Build
+
+; Close Button
+Close=Sluiten
+
+; user defined lines in MLE (don't use semicolon ; )
+ABOUT_INFO_LINE1=DataSeeker wordt gehost door Netlabs http://dataseeker.netlabs.org/
+ABOUT_INFO_LINE2=
+ABOUT_INFO_LINE3=vertaling Jacques van Leeuwen
+ABOUT_INFO_LINE4=Version 1.0 (20100527)
+ABOUT_INFO_LINE5=
+ABOUT_INFO_LINE6=Taalondersteuning via eCo Software runtime (base) http://ecomstation.ru/ecosoft/runtime.php
+ABOUT_INFO_LINE7=
+ABOUT_INFO_LINE8=Usage subjects to 'Modified BSD License'. Portions of code subjects to 'Sybase Open Watcom Public License'. See COPYING
+
+; **********************************************************************
+;   Menues
+; **********************************************************************
+
+~File=~Bestand
+~Open=~Openen
+~Save=Op~slaan
+Save ~as=Opslaan ~als
+E~xit=E~inde
+
+~Edit=B~ewerken
+Cu~t=~Knippen
+~Copy=K~opie‰ren
+~Paste=~Plakken
+
+~Selected=Ge~selecteerd
+;~Edit=~B~ewerken
+~Open=~Openen
+~Copy to clipboard=Kopieer ~naar klembord
+Copy whole l~ine to clipboard=Kop~ieer gehele regel naar klembord
+Copy ~all to clipboard=Kopieer ~alles naar het klembord
+Open ~folder=Open ~map
+Open command ~line=Open een opdrachtrege~l
+Open ~settings=Open in~stellingen
+
+~View=~Weergave
+D~o not sort=Niet s~orteren
+Sort ~ascending=O~plopend sorteren
+Sort d~escending=A~flopend sorteren
+~Date=~Datum
+~Time=~Tijd
+~Size=~Grootte
+Line ~numbers=Regel~nummers
+St~rip spaces=Ve~rwijder spaties
+Settings~...=Instellingen~...
+
+~Help=~Help
+Help ~index=Help ~index
+~Product information=~Produkt informatie...
+
+; **********************************************************************
+;   Main Window
+; **********************************************************************
+Files to search for=Te zoeken bestanden
+Text to search for (if any)=Te zoeken tekst (indien aanwezig)
+Search results history=Zoekresultaten geschiedenis
+Files found=Gevonden bestanden
+Text found=Gevonden tekst
+Elapsed time=Verstreken tijd
+Searching...=Aan het zoeken...
+
+; Buttons
+~Search=~Zoeken
+S~top=S~top
+Drives to search (if not specified)=Te doorzoeken stations (indien niet opgegeven)
+
+; **********************************************************************
+;   Drives to search dialog
+; **********************************************************************
+
+Hard disks=Harde schijven (H)
+Network drives=Netwerk stations (N)
+CD/DVD drives=CD/DVD stations (C)
+Zip/EZ/Jaz drives=Zip/EZ/Jaz stations (Z)
+ALL DRIVES=ALLE STATIONS
+
+; **********************************************************************
+;   Settings Dialog
+; **********************************************************************
+
+; Titles
+Data Seeker settings=Data Seeker instellingen
+Search=Zoeken
+History=Geschiedenis
+General=Algemeen
+
+; Search options
+~Recursive search=~Omgekeerd zoeken
+E~xclude binary files=Binaire bestanden u~itsluiten
+Case ~insensitive=Hoofdletter on~gevoelig
+~Boolean operators=~Binaire operatoren
+Search for ~folder names too=Search for ~folder names too
+
+; History options
+~Sort entries=~Sorteer ingangen
+~Maximum entries=~Maximum aantal ingangen
+
+; General options
+C~ommand shell=~Opdrachtregel shell
+~Edit files with=B~ewerk bestanden met:
+~OK=~OK
+~Cancel=~Annuleren
+
+; **********************************************************************
+;   Special keys (used in menues)
+; **********************************************************************
+
+Ctrl=Ctrl
+Shift=Shift
+Alt=Alt
+
+; **********************************************************************
+;   Drives button text when multimedia libraries not found
+; **********************************************************************
+
+missing mmpmcrts.dll/sw.dll=mmpmcrts.dll/sw.dll niet aanwezig
+
+; **********************************************************************
+;   File Open Container (FOC) and no foc.dll error box
+; **********************************************************************
+
+; FOC window title and buttons
+Select files or directories=Select files or directories
+OK=OK
+Cancel=Annuleren
+
+; no FOC.DLL error box
+FOC.DLL not found=FOC.DLL not found
+FOC_FAIL_2=.
+FOC_FAIL_3=For using the File Open Dialog you need FOC.DLL in your libpath. It is f.i. included with eCo Software runtime base & win. You can grab it from http://ecomstation.ru/ecosoft/runtime.php
+FOC_FAIL_4=.
+FOC_FAIL_5=.
+
+

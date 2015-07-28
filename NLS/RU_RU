@@ -1,0 +1,181 @@
+; DataSeeker
+; eCoSoft LANGE file
+;
+; Language: your language
+;
+; History:
+; 20100208 translator name, initial based on EN_EN v20100208
+; 20111226 A. Buchinger, added FOC (missing translation)
+; 20111231 A. Buchinger, added some translations made by Andrea
+; 20140916 A. Buchinger, added license information
+;
+;
+; for translation into another language change the part right of the = sign
+; - lines up to max. 256 chars are allowed
+; - lines starting with ; are comments
+; - ~ means the next character is the accelerator character
+;
+; DO NOT CHANGE TEXT LEFT OF THE EQUAL SIGN (=), this is the key for finding your translated text
+; There is no need to translate comments (lines starting with ; )
+;
+; 234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...100...4567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...200...4567890123456789012345678901..236  max. length --->|
+;
+; **********************************************************************
+;   COMMON PART
+; **********************************************************************
+
+; some strings only used for debuging messages
+LANGUAGE=your language
+
+TRANSLATOR_NAME=Eugene Gorbunoff & Andrea
+LANGUAGE_VERSION=1.1
+LANGUAGE_DATE=20111231
+
+; help file name
+; _XX should reflect the language f.i. _FR means french
+HelpFile=DataSeek_XX.hlp
+
+; **********************************************************************
+;   About Dialog
+; **********************************************************************
+
+Version=Версия
+Build=строить
+
+; Close Button
+Close=Закрыть
+
+; user defined lines in MLE (don't use semicolon ; )
+ABOUT_INFO_LINE1=DataSeeker is hosted at Netlabs http://dataseeker.netlabs.org/
+ABOUT_INFO_LINE2=
+ABOUT_INFO_LINE3=Translation by Eugene Gorbunoff and Andrea
+ABOUT_INFO_LINE4=Version 1.1 (20111231)
+ABOUT_INFO_LINE5=
+ABOUT_INFO_LINE6=National language support by eCo Software runtime (base) http://ecomstation.ru/ecosoft/runtime.php
+ABOUT_INFO_LINE7=
+ABOUT_INFO_LINE8=Usage subjects to 'Modified BSD License'. Portions of code subjects to 'Sybase Open Watcom Public License'. See COPYING
+
+; **********************************************************************
+;   Menues
+; **********************************************************************
+
+~File=Файл
+~Open=Открыть
+~Save=Сохранить
+Save ~as=Сохранить как
+E~xit=Выход
+
+~Edit=Редактировать
+Cu~t=Вырезать
+~Copy=Копировать
+~Paste=Вставить
+
+~Selected=~выбранный
+;~Edit=~обработка
+~Open=~открыть
+~Copy to clipboard=~копировайте буфер обмена
+Copy whole l~ine to clipboard=скопировайте весь л ~ ине в буфер обмена
+Copy ~all to clipboard=~ Все копировайте в буфер обмена
+Open ~folder=Открыть папку ~
+Open command ~line=Открытая линия команды ~
+Open ~settings=Откройте настройки ~
+
+~View=~вид
+D~o not sort=н~е сортировать
+Sort ~ascending=Сортировать ~ восходящий
+Sort d~escending=Сортировать ~ нисходящий
+~Date=~число
+~Time=~время
+~Size=~размер
+Line ~numbers=~ номеры Линии
+St~rip spaces=по ~ лоса мест
+Settings~...=Настройки ~...
+
+~Help=Помощь
+Help ~index=Помощь ~ индекс
+~Product information=~Информация о продукте ...
+
+; **********************************************************************
+;   Main Window
+; **********************************************************************
+
+Files to search for=поиск файлов
+Text to search for (if any)=искать текста в Файле (если таковые имеются)
+Search results history=История Результаты поиска
+Files found=Найдено файлов
+Text found=Найден текст
+Elapsed time=затраченное время
+Searching...=искать...
+
+; Buttons
+~Search=Искать
+S~top=Остановиться
+Drives to search (if not specified)=Дисководы поыскивать(если не указано)
+
+; **********************************************************************
+;   Drives to search dialog
+; **********************************************************************
+
+Hard disks=Жесткие диски
+Network drives=Сетевые диски
+CD/DVD drives=CD/DVD приводы
+Zip/EZ/Jaz drives=Zip/EZ/Jaz диски
+ALL DRIVES=ВСЕ ДИСКИ
+
+; **********************************************************************
+;   Settings Dialog
+; **********************************************************************
+
+; Titles
+Data Seeker settings=Настройки Data Seeker
+Search=Поиск
+History=История
+General=вообще
+
+; Search options
+~Recursive search=Рекурсивный поиск
+E~xclude binary files=Исключить бинарные файлы
+Case ~insensitive=Случай ~нечувствительный
+~Boolean operators=~Булевы операторы
+Search for ~folder names too=искать ~папка Имя также
+
+; History options
+~Sort entries=~Сортировать записи
+~Maximum entries=~Максимальная записей
+
+; General options
+C~ommand shell=Коммандная строка
+~Edit files with=~обрабатывать файлов с
+~OK=~ОК
+~Cancel=~Отмена
+
+; **********************************************************************
+;   Special keys (used in menues)
+; **********************************************************************
+
+Ctrl=Ctrl
+Shift=Shift
+Alt=Alt
+
+; **********************************************************************
+;   Drives button text when multimedia libraries not found
+; **********************************************************************
+
+missing mmpmcrts.dll/sw.dll=mmpmcrts.dll/sw.dll nicht gefunden
+
+; **********************************************************************
+;   File Open Container (FOC) and no foc.dll error box
+; **********************************************************************
+
+; FOC window title and buttons
+Select files or directories=Select files or directories
+OK=ОК
+Cancel=Отмена
+
+; no FOC.DLL error box
+FOC.DLL not found=FOC.DLL not found
+FOC_FAIL_2=.
+FOC_FAIL_3=For using the File Open Dialog you need FOC.DLL in your libpath. It is f.i. included with eCo Software runtime base & win. You can grab it from http://ecomstation.ru/ecosoft/runtime.php
+FOC_FAIL_4=.
+FOC_FAIL_5=.
+

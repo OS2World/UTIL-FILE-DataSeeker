@@ -1,0 +1,27 @@
+                          Upload Information Template for Hobbes.nmsu.edu
+                          ===============================================
+
+        Archive Filename: dataseeker114.zip
+       Short Description: PM text and file finder - better PMSeek (ACDataSeeker)
+        Long Description: A multithreaded text and file finder for the OS/2 presentation manager. Version 1.14. Written by Alessandro Cantatore / Andreas Buchinger
+
+      Proposed directory
+           for placement: /pub/os2/util/file
+
+               Your name: Andreas Buchinger
+           Email address: andi.os2.software@gmx.net
+    Program contact name: (same)
+   Program contact email: (same)
+             Program URL: http://dataseeker.netlabs.org/en/site/index.xml
+
+      Would you like the
+   contact email address
+    included in listings? yes
+
+Operating System/Version: OS/2 warp 3 or better
+ Additional requirements: Multimedia subsystem, (eCo Software runtime base & win when using FOC or NLS)
+
+                Replaces: dataseeker113.zip
+
+
+

@@ -1,0 +1,135 @@
+Notes on building DataSeeker
+----------------------------
+
+20131124
+IRE bug - does not honor 'MLS_LIMITVSCROLL' in DLG_ABOUT and DLG_FOC_FAIL. Add
+it MANUALLY every time IRE writes to DataSeeker.Rc
+
+20090319
+Compiler - IBMCPP 3.65
+
+Maybe toolkit 4.5 (os2tk45.zip) is needed too - I have it installed and
+%include% is set in my config.sys
+
+ressource compiler - usually v5 (Version 5.00.004 May 12 1999) named rc5.exe on
+my system. But sometimes I use v4 (Version 4.00.010 Apr 26 1999) which gives
+better/other error messages (comment in makefile)
+
+GUI made with URE (hobbes) - no hand made entries in .rc file!
+
+make - nmake from IBMCPP3.65 or 3.08 or os2tk45 ???
+2 cmd files make.cmd and make_release.cmd are used (DBUILD.cmd and RBUILD.cmd
+are Alessandros original scripts but I do not use it).
+- make.cmd does a debug build which traces infos to pmprintf (needs pmprintf.dll
+  in your libpath) and all debug infos icdebug (IBMCPP3.65 debugger) needs.
+- make_release.cmd does a release build without debug infos.
+
+I usually start a build with <F5> within VisualSlickEdit4.0.
+<CTRL><SHFT><up/down) jumps directly to the source line which causes a build
+error. The .vpj file is the VS project file. If you want the most powerful
+programmers editor for OS/2 - eCS, get VisualSlickEdit. Unfortunatly VS4 needs
+absolute path in pogram/properties/file list. So all project files are with full
+path in DataSeek.vpj. You have to change if you use VS4 and a different path for
+the source files. Otherwise VS4 behaves very weird. Like opening 10 ore more
+buffers for the same file, or opening completely different file after search
+over all project files...
+
+envicc365.cmd used in make.cmd sets my enviroment. It basically calls a
+modified version of P:\IBMCPP3.65\BIN\SETENV.CMD. To see nice colored output
+instead of the escape sequences, you have to enabled ANSI support for command
+lines.
+
+My setenv.cmd looks like -
+---------------------------
+
+/* Setting enviroment for VAC3.65 */
+HaveEnv = ""
+/* check if CPP3.65 in PATH and exit if yes */
+IF LastPos('P:\IBMCPP3.65' , value( 'path', , 'OS2ENVIRONMENT')) >  0  THEN HaveEnv = "TRUE"
+
+IF HaveEnv = "TRUE" THEN
+        DO
+        rc=charout(,'1b'x||'[36;1m')
+        say 'IBMCPP3.65 Enviroment already set'
+        rc=charout(,'1b'x||'[0m')
+        RETURN
+        END
+
+rc=charout(,'1b'x||'[31;1m')
+say 'Don''t have IBMCPP3.65 enviroment, setting now'
+rc=charout(,'1b'x||'[0m')
+
+"SET COMPILER365=YES"
+
+"SET CXXMAIN=P:\IBMCPP3.65"
+
+
+"SET BEGINLIBPATH=%CXXMAIN%\DLL;%BEGINLIBPATH%"
+"SET DPATH=%CXXMAIN%\HELP;%CXXMAIN%\LOCALE;%DPATH%"
+"SET HELP=%CXXMAIN%\HELP;%HELP%"
+"SET INCLUDE=%CXXMAIN%\INCLUDE;%INCLUDE%"
+"SET IPFC=%CXXMAIN%\BIN;%IPFC%"
+"SET LIB=%CXXMAIN%\LIB;%LIB%"
+"SET CPP_DBG_LANG=CPP"
+"SET LANG=en_us"
+"SET NLSPATHTEMP=%CXXMAIN%\MSG\%%N"
+"SET NLSPATH=%NLSPATHTEMP%;%NLSPATH%"
+"SET NLSPATHTEMP="
+"SET PATH=%CXXMAIN%\BIN;%PATH%"
+
+
+rc=charout(,'1b'x||'[36;1m')
+say "Enviroment for VACPP3.65 is now set correctly"
+rc=charout(,'1b'x||'[0m')
+
+
+
+My EnvTK45.cmd checks if the toolkit is in the INCLUDE env _before_ the
+CPP3.65. It looks like -
+---------------------------
+
+/* Check if os2tk45 is already set in INCLUDE */
+HaveIncTK = ""
+
+IncVar = value( 'include', , 'OS2ENVIRONMENT')
+IncVar = TRANSLATE(IncVar)
+
+/* say IncVar */
+
+pos45 = Pos('OS2TK45\H' , IncVar)
+pos365 = Pos('IBMCPP3.65\INCLUDE' ,IncVar)
+
+/* check if os2tk45 is in INCLUDE _before_ ibmcpp3.65\include*/
+IF pos365 > 0 THEN
+    DO
+    IF pos365 > pos45 THEN HaveIncTK = "TRUE"
+    END
+ELSE
+    DO
+    IF pos45 >  0  THEN HaveIncTK = "TRUE"
+    END
+
+
+
+/*say "os2tk45 " pos45
+say "ibmcpp3.65 " pos365 */
+
+IF HaveIncTK = "TRUE" THEN
+        DO
+        rc=charout(,'1b'x||'[36;1m')
+        say 'Include to os2tk45\h already set'
+        rc=charout(,'1b'x||'[0m')
+        RETURN
+        END
+
+/* Using os2tk45 enviroment instead of ibmcpp365 include files (for tcpip 32-bit stack for mbmon2 widget) */
+rc=charout(,'1b'x||'[31;1m')
+say 'Setting include to os2tk45\...'
+rc=charout(,'1b'x||'[0m')
+"SET INCLUDE=P:\os2tk45\h;P:\OS2TK45\SOM\INCLUDE;P:\OS2TK45\INC;P:\OS2TK45\H\GL;P:\OS2TK45\H\LIBC;%INCLUDE%"
+rc=charout(,'1b'x||'[36;1m')
+say 'Include to os2tk45\h sucessfully set'
+rc=charout(,'1b'x||'[0m')
+
+
+

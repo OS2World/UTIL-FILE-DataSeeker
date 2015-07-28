@@ -1,0 +1,180 @@
+; DataSeeker
+; eCoSoft LANGE file
+;
+; Language: FRENCH
+;
+; History:
+; 20100217 Guillaume Gay - initial version based on v20100208
+; 20111226 A. Buchinger, added FOC (missing translation)
+; 20140916 A. Buchinger, added license information
+;
+;
+; for translation into another language change the part right of the = sign
+; - lines up to max. 256 chars are allowed
+; - lines starting with ; are comments
+; - ~ means the next character is the accelerator character
+;
+; DO NOT CHANGE TEXT LEFT OF THE EQUAL SIGN (=), this is the key for finding your translated text
+; There is no need to translate comments (lines starting with ; )
+;
+; 234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...100...4567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...200...4567890123456789012345678901..236  max. length --->|
+;
+; ***********************************
+;   COMMON PART
+; ***********************************
+
+; some strings only used for debuging messages
+LANGUAGE=Franáais (French)
+
+TRANSLATOR_NAME=Guillaume Gay
+LANGUAGE_VERSION=1.0
+LANGUAGE_DATE=20100217
+
+; help file name
+; _XX should reflect the language f.i. _FR means french
+HelpFile=DataSeek_FR.hlp
+
+; ***********************************
+;   About Dialog
+; ***********************************
+
+Version=Version
+Build=Construction
+
+; Close Button
+Close=Fermer
+
+; user defined lines in MLE (don't use semicolon ; )
+ABOUT_INFO_LINE1=DataSeeker est un projet Netlabs http://dataseeker.netlabs.org/
+ABOUT_INFO_LINE2=
+ABOUT_INFO_LINE3=Traduction franáaise : Guillaume Gay <guillaume.gay@bigfoot.com>
+ABOUT_INFO_LINE4=Version 1.0 (20100216)
+ABOUT_INFO_LINE5=
+ABOUT_INFO_LINE6=Support multilingue via eCo Software runtime (base) http://ecomstation.ru/ecosoft/runtime.php
+ABOUT_INFO_LINE7=
+ABOUT_INFO_LINE8=Usage subjects to 'Modified BSD License'. Portions of code subjects to 'Sybase Open Watcom Public License'. See COPYING
+
+; ***********************************
+;   Menues
+; ***********************************
+
+~File=~Fichier
+~Open=~Ouvrir
+~Save=~Enregistrer
+Save ~as=Enregistrer ~sous
+E~xit=~Quitter
+
+~Edit=~êdition
+Cu~t=~Couper
+~Copy=Co~pier
+~Paste=Co~ller
+
+~Selected=~SÇlection
+;~Edit=~êditer
+~Open=~Ouvrir
+~Copy to clipboard=~Copier vers le presse-papiers
+Copy whole l~ine to clipboard=Copier toute la l~igne vers le presse-papiers
+Copy ~all to clipboard=~Tout copier vers le presse-papiers
+Open ~folder=Ouvrir le ~dossier
+Open command ~line=Ouvrir la ~ligne de commande
+Open ~settings=Ouvrir les Para~mätres
+
+~View=~Affichage
+D~o not sort=~Pas de tri
+Sort ~ascending=Tri ~ascendant
+Sort d~escending=Tri d~escendant
+~Date=~Date
+~Time=~Heure
+~Size=~Taille
+Line ~numbers=~NumÇro de ligne
+St~rip spaces=~Retirer les espaces
+Settings~...=Para~mätres ...
+
+~Help=~Aide
+Help ~index=~Index
+~Product information=Info. ~produit
+
+; ***********************************
+;   Main Window
+; ***********************************
+
+Files to search for=Fichiers Ö rechercher :
+Text to search for (if any)=Texte (optionnel) Ö rechercher :
+Search results history=Historique des rÇsultats de recherche :
+Files found=Fichier(s) trouvÇ(s) :
+Text found=Texte trouvÇ :
+Elapsed time=Temps ÇcoulÇ :
+Searching...=Recherche en cours
+
+; Buttons
+~Search=~Rechercher
+S~top=~Arràt
+Drives to search (if not specified)=SpÇcifier les unitÇs pour la recherche
+
+; ***********************************
+;   Drives to search dialog
+; ***********************************
+
+Hard disks=Disques durs (H)
+Network drives=Disques rÇseau (N)
+CD/DVD drives=Lecteurs de CD/DVD (C)
+Zip/EZ/Jaz drives=Lecteurs Zip/EZ/Jaz (F)
+ALL DRIVES=Toutes les unitÇs
+
+; ***********************************
+;   Settings Dialog
+; ***********************************
+
+; Titles
+Data Seeker settings=Paramätres de Data Seeker
+Search=Recherche
+History=Historique
+General=GÇnÇral
+
+; Search options
+~Recursive search=Recherche ~rÇcursive
+E~xclude binary files=E~xclure les fichiers binaires
+Case ~insensitive=~Ignorer la casse
+~Boolean operators=OpÇrateurs ~BoolÇens
+Search for ~folder names too=Inclure les noms de dossiers
+
+; History options
+~Sort entries=~Trier les entrÇes
+~Maximum entries=Nombre ~maximum d'entrÇes
+
+; General options
+C~ommand shell=~Ligne de commandes
+~Edit files with=~êditer les fichiers avec
+~OK=~OK
+~Cancel=~Annuler
+
+; ***********************************
+;   Special keys (used in menues)
+; ***********************************
+
+Ctrl=Ctrl
+Shift=Maj
+Alt=Alt
+
+; **********************************************************************
+;   Drives button text when multimedia libraries not found
+; **********************************************************************
+
+missing mmpmcrts.dll/sw.dll=mmpmcrts.dll/sw.dll nicht gefunden
+
+; **********************************************************************
+;   File Open Container (FOC) and no foc.dll error box
+; **********************************************************************
+
+; FOC window title and buttons
+Select files or directories=SÇlection de fichiers ou dossiers
+OK=OK
+Cancel=Annuler
+
+; no FOC.DLL error box
+FOC.DLL not found=FOC.DLL non trouvÇ
+FOC_FAIL_2=.
+FOC_FAIL_3=Pour àtre en mesure d'utiliser la boåte de dialogue d'ouverture de fichiers ("File Open Dialog"), FOC.DLL doit figurer dans l'un des rÇpertoires de LIBPATH. Cette bibliothäque est fournie avec "eCo Software runtime base & win".
+FOC_FAIL_4=Vous pouvez l'obtenir sur http://ecomstation.ru/ecosoft/runtime.php
+FOC_FAIL_5=.
+

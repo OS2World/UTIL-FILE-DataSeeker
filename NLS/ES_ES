@@ -1,0 +1,180 @@
+; DataSeeker
+; eCoSoft LANGE file
+;
+; Language: Spanish
+;
+; History:
+; 20100510 Salvador Parra Camacho, initial based on EN_EN v20100208
+; 20111226 A. Buchinger, added FOC (missing translation)
+; 20140916 A. Buchinger, added license information
+;
+;
+; for translation into another language change the part right of the = sign
+; - lines up to max. 256 chars are allowed
+; - lines starting with ; are comments
+; - ~ means the next character is the accelerator character
+;
+; DO NOT CHANGE TEXT LEFT OF THE EQUAL SIGN (=), this is the key for finding your translated text
+; There is no need to translate comments (lines starting with ; )
+;
+; 234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...100...4567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234...200...4567890123456789012345678901..236  max. length --->|
+;
+; **********************************************************************
+;   COMMON PART
+; **********************************************************************
+
+; some strings only used for debuging messages
+LANGUAGE=Spanish (Espa¤ol)
+
+TRANSLATOR_NAME=Salvador Parra Camacho
+LANGUAGE_VERSION=1.0
+LANGUAGE_DATE=20100510
+
+; help file name
+; _XX should reflect the language f.i. _FR means french
+HelpFile=DataSeek_ES.hlp
+
+; **********************************************************************
+;   About Dialog
+; **********************************************************************
+
+Version=Versi¢n
+Build=Build
+
+; Close Button
+Close=Cerrar
+
+; user defined lines in MLE (don't use semicolon ; )
+ABOUT_INFO_LINE1=DataSeeker se aloja en Netlabs http://dataseeker.netlabs.org/
+ABOUT_INFO_LINE2=
+ABOUT_INFO_LINE3=Traducci¢n espa¤ola por Salvador Parra Camacho
+ABOUT_INFO_LINE4=Versi¢n 1.0 (20100510)
+ABOUT_INFO_LINE5=
+ABOUT_INFO_LINE6=Soporte de idiomas por eCo Software runtime (base) http://ecomstation.ru/ecosoft/runtime.php
+ABOUT_INFO_LINE7=
+ABOUT_INFO_LINE8=Usage subjects to 'Modified BSD License'. Portions of code subjects to 'Sybase Open Watcom Public License'. See COPYING
+
+; **********************************************************************
+;   Menues
+; **********************************************************************
+
+~File=~Archivo
+~Open=~Abrir
+~Save=~Guardar
+Save ~as=Guardar ~como
+E~xit=~Salir
+
+~Edit=~Editar
+Cu~t=Cor~tar
+~Copy=~Copiar
+~Paste=~Pegar
+
+~Selected=~Seleccionado
+;~Edit=~Editar
+~Open=~Abrir
+~Copy to clipboard=~Copiar al portapapeles
+Copy whole l~ine to clipboard=Copiar la l¡~nea completa al portapapeles
+Copy ~all to clipboard=Copiar ~todo al portapapeles
+Open ~folder=Abrir ca~rpeta
+Open command ~line=Abrir ~l¡nea de comandos
+Open ~settings=Abrir ~propiedades
+
+~View=~Ver
+D~o not sort=~No ordenar
+Sort ~ascending=Ordenar ~ascendente
+Sort d~escending=Ordenar d~escendente
+~Date=~Fecha
+~Time=~Hora
+~Size=~Tama¤o
+Line ~numbers=~N£meros de l¡nea
+St~rip spaces=E~liminar espacios
+Settings~...=Configuraci¢n~...
+
+~Help=A~yuda
+Help ~index=~Öndice de ayuda
+~Product information=Informaci¢n del ~producto...
+
+; **********************************************************************
+;   Main Window
+; **********************************************************************
+
+Files to search for=Archivos que buscar
+Text to search for (if any)=Texto que buscar
+Search results history=Historial de resultados de b£squeda
+Files found=Archivos encontrados
+Text found=Texto encontrado
+Elapsed time=Tiempo transcurrido
+Searching...=Buscando
+
+; Buttons
+~Search=~Buscar
+S~top=~Parar
+Drives to search (if not specified)=Unidades en las que buscar
+
+; **********************************************************************
+;   Drives to search dialog
+; **********************************************************************
+
+Hard disks=Discos duros (H)
+Network drives=Unidades de red (N)
+CD/DVD drives=Unidades de CD/DVD (C)
+Zip/EZ/Jaz drives=Unidades Zip/EZ/Jaz (Z)
+ALL DRIVES=TODAS LAS UNIDADES
+
+; **********************************************************************
+;   Settings Dialog
+; **********************************************************************
+
+; Titles
+Data Seeker settings=Configuraci¢n de Data Seeker
+Search=Buscar
+History=Historial
+General=General
+
+; Search options
+~Recursive search=B£squeda ~recursiva
+E~xclude binary files=E~xcluir archivos binarios
+Case ~insensitive=~Insensible al caso (may/min)
+~Boolean operators=Operadores ~boleanos
+Search for ~folder names too=Search for ~folder names too
+
+; History options
+~Sort entries=~Ordenar entradas
+~Maximum entries=Entradas ~m ximas
+
+; General options
+C~ommand shell=Int‚rprete de ~mandatos
+~Edit files with=~Editar archivos con
+~OK=~Bien
+~Cancel=~Cancelar
+
+; **********************************************************************
+;   Special keys (used in menues)
+; **********************************************************************
+
+Ctrl=Ctrl
+Shift=May£s
+Alt=Alt
+
+; **********************************************************************
+;   Drives button text when multimedia libraries not found
+; **********************************************************************
+
+missing mmpmcrts.dll/sw.dll=mmpmcrts.dll/sw.dll nicht gefunden
+
+; **********************************************************************
+;   File Open Container (FOC) and no foc.dll error box
+; **********************************************************************
+
+; FOC window title and buttons
+Select files or directories=Select files or directories
+OK=Bien
+Cancel=Cancelar
+
+; no FOC.DLL error box
+FOC.DLL not found=FOC.DLL not found
+FOC_FAIL_2=.
+FOC_FAIL_3=For using the File Open Dialog you need FOC.DLL in your libpath. It is f.i. included with eCo Software runtime base & win. You can grab it from http://ecomstation.ru/ecosoft/runtime.php
+FOC_FAIL_4=.
+FOC_FAIL_5=.
+

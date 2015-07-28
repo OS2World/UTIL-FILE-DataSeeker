@@ -1,0 +1,27 @@
+Translating DataSeeker:
+-----------------------
+Unzip DataSeek.NLS - this is a standard zip file. Edit the appropriate file in
+.\NLS directory. Change the text after the equal sign (=) into the target
+language. Zip all files in .\NLS to DataSeek.nls. Check if DataSeek.nls is in
+the same directory than DataSeeker.exe. Next time DataSeeker starts in the
+language defined by your system enviroment variable lang (echo %lang%). You can
+try another language by setting the LANG enviroment variable. To do this open a
+command shell, change into your DataSeeker directory, type f.i. 'set LANG=de_DE'
+and start DataSeeker from this command shell.
+
+Use the following command to zip all language files from within the NLS
+directory -
+cd NLS
+zip ..\DataSeek.nls *
+
+Translating the help file:
+--------------------------
+If exists the help file mentioned in the appropriate NLS file (HelpFile=) is
+used. To translate into other languages you have to generate a proper *.ipf
+file, compile it with the ipf compiler (f.i. ipfc -i -D:1 -C:850 -L:ENU *.ipf)
+and rename the generated *.inf file to DataSeek_XX.hlp. You can use DataSeek.ipf
+as a template. Be careful to change only text in the .ipf file especially if you
+do not know the .ipf syntax.
+
+For bug reports see http://svn.netlabs.org/dataseeker
+20120101 AB

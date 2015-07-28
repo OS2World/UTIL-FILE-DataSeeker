@@ -1,0 +1,50 @@
+ToDo / ToCheck:
+---------------
+This is a memo list. No promise that anything here will be fixed/changed soon.
+
+DONE - check boxes for search options? (email with Andreas Schnellbacher)
+DONE - broken EPM support with 0.47 - wait on feedback for 048 if okay
+- search in .zip .rar files
+- search in extended attributes
+- update help file and context sensitive help
+- completly remove Edit menu?
+DONE - if no .ini file is found, double-click do not start editor. Settings
+  dialog have to be opened once.
+- make g.iHistSort = OPT_DONOTSORTHISTORY selectable in settings dialog
+DONE - max. history entries do not work
+- limit history entries for Files and Text DD-boxes too
+- start editor with colum too (beside line)
+DONE - LARGE file support (display correct size)
+DONE - what to do with 'view' section in settings dialog?
+- store last selected drives in WIN_DRIVES window
+DONE - store/restore window size even on reboot (?)
+DONE - RightMouseClick - Recursiv, CaseSensitiv, Exclude EXE, Boolean..
+DONE - ESC close drop down fields and drives window
+- command processor entry with leading blank ' ' do not work
+DONE - selecting a 'search entry' from the combo-box with up/down and closing
+the list with the arrow (not <enter> or mouse click), shortens the text in the entry
+field to 256 chars + some garbage. This seems to be a combo-box bug. Work around
+for CBN_ENTER is already implemented.
+- speed test 0.52 compared to 0.53 (memory management changes)
+- signaling the user when some internal limits are reached
+DONE - multilanguage support
+DONE - directory selection dialog
+DONE - if 'Files to search' is directory append \*
+- searching on different drives without \* (directory specified) do not work
+DONE - mention lange in .inf and readme
+- pack .sym file into .zip
+- edit contents of DD boxes
+DONE - translate CTRL, ALT, SHFT
+- progress bar
+DONE (fixed drives refresh) - attaching USB Stick leads to loosing DVD in drives
+menu (W: instead X:)
+DONE - when drives are not ready (A: till LBOX32:) selecting one leads to
+errornous drive letter (USBCDROM.ADD with Huawei)
+- in about dialog Build: 00xxx is too long (with eCS Mini in VPC) or DEBUG
+- hints on .hlp file from Jacques
+DONE - new option search on dirs too
+- Accelerators F2 for Command line... like lcmd
+DONE - 4os2 start ....
+
+DONE - 20140914 remove libdata.h, dosh.h
+DONE - 20140914 update readme and .inf with new license
